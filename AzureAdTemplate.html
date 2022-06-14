@@ -72,15 +72,16 @@
                     <div class="d-grid mb-2">
                         <button id="login-btn" class="btn btn-success btn-lg" type="button">LOGIN</button>
                     </div>
-                </form>
+                </form>-->
+                
                 <p class="text-center text-muted mb-2">OR</p>
                 <div class="text-center soical-icons mb-3">
                     <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-apple"></i>
                     <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-microsoft"></i>
                     <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-google"></i>
                     <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-linkedin"></i>
-                </div> -->
-                <p class="mb-3 text-muted text-center">By creating an account you agree to our</p>
+                </div> 
+                <p class="mb-3 text-muted text-center pt-3">By creating an account you agree to our</p>
                 <div class="row justify-content-center align-items-center">
                     <div class="col-auto">
                         <button type="button" class="btn btn-outline-info mb-3">Terms of Conditions</button>
@@ -111,14 +112,17 @@
             width: 30px;
             cursor: pointer;
         }
+        .intro, .divider, .options, label,.create{
+            display: none;
+        }
+
     </style>
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#login-btn").on("click",function(){
-                
-
-            });
+            $("#email").addClass("form-control form-control-lg mb-3");
+            $("#password").addClass("form-control form-control-lg mb-3");
+            $("#next").addClass("btn btn-lg btn-success").text("LOGIN");
         });
     </script>
 </body>
