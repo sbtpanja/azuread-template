@@ -129,7 +129,8 @@
             display: none;
         }
 
-        .entry-item {
+        .entry-item,
+        .rememberMe {
             position: relative;
         }
 
@@ -139,6 +140,10 @@
             top: 13px;
             font-size: 1.5rem;
             color: gray;
+        }
+
+        label[for="rememberMe"] {
+            display: inline;
         }
     </style>
 
@@ -150,6 +155,9 @@
             $("#password").after('<i class="fa fa-key input-icon"></i>');
             $("#next").addClass("btn btn-lg btn-success").text("LOGIN");
             $("#next").parent().addClass("d-grid");
+            $(".rememberMe").addClass("mb-3");
+            $("#rememberMe").addClass("form-check-input");
+            $("#rememberMe").after('<a href="#" class="text-decoration-none" style="right: 0;position:absolute;">Forgot Password ?</a>');
             console.log("script running");
 
             $(".soical-icons i").on("click", function () {
