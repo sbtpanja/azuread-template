@@ -87,6 +87,7 @@
                     <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-microsoft"></i>
                     <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-google"></i>
                     <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-linkedin"></i>
+                    <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-twitter"></i>
                 </div>
                 <p class="mb-3 text-muted text-center">By creating an account you agree to our</p>
                 <div class="row justify-content-center align-items-center">
@@ -123,18 +124,66 @@
         .options,
         label,
         .create,
-        #forgotPassword, .heading {
+        #forgotPassword,
+        .heading {
             display: none;
+        }
+
+        .entry-item {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 13px;
+            font-size: 1.5rem;
+            color: gray;
         }
     </style>
 
     <script>
         $(document).ready(function () {
-            $("#email").addClass("form-control form-control-lg mb-3");
-            $("#password").addClass("form-control form-control-lg mb-3");
+            $("#email").addClass("form-control form-control-lg mb-3 ps-5");
+            $("#password").addClass("form-control form-control-lg mb-3 ps-5");
+            $("#email").after('<i class="fa fa-envelope input-icon"></i>');
+            $("#password").after('<i class="fa fa-key input-icon"></i>');
             $("#next").addClass("btn btn-lg btn-success").text("LOGIN");
             $("#next").parent().addClass("d-grid");
             console.log("script running");
+
+            $(".soical-icons i").on("click", function () {
+                var socialList = [
+                    'fa-apple',
+                    'fa-microsoft',
+                    'fa-google',
+                    'fa-linkedin',
+                    'fa-twitter'
+                ];
+                var icon = $(this);
+                var iconClass = icon[0].classList;
+                var social = socialList.filter(s => iconClass.contains(s));
+                console.log(social[0]);
+                switch (social[0]) {
+                    case "fa-apple":
+                        $("#AppleManagedExchange").click();
+                        break;
+                    case "fa-microsoft":
+                        $("#MicrosoftAccountExchange").click();
+                        break;
+                    case "fa-google":
+                        $("#GoogleExchange").click();
+                        break;
+                    case "fa-linkedin":
+                        $("#LinkedInExchange").click();
+                        break;
+                    case "fa-twitter":
+                        $("#TwitterExchange").click();
+                        break;
+                    default:
+                        console.log("social provider not found");
+                }
+            });
         });
     </script>
 </body>
