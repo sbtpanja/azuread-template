@@ -87,7 +87,7 @@
                     <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-microsoft"></i>
                     <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-google"></i>
                     <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-linkedin"></i>
-                    <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-twitter"></i>
+                    <!-- <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-twitter"></i> -->
                 </div>
                 <p class="mb-3 text-muted text-center">By creating an account you agree to our</p>
                 <div class="row justify-content-center align-items-center">
@@ -137,23 +137,32 @@
         .input-icon {
             position: absolute;
             left: 15px;
-            top: 13px;
-            font-size: 1.5rem;
+            bottom: 10px;
+            font-size: 1.1rem;
             color: gray;
         }
 
         label[for="rememberMe"] {
             display: inline;
         }
+
+        .error p {
+            margin-bottom: 5px;
+        }
+
+        .highlightError {
+            border: 1px solid red;
+            box-shadow: 0 0 0 0.25rem rgb(255 0 0 / 25%);
+        }
     </style>
 
     <script>
         $(document).ready(function () {
-            $("#email").addClass("form-control form-control-lg mb-3 ps-5");
-            $("#password").addClass("form-control form-control-lg mb-3 ps-5");
+            $("#email").addClass("form-control mb-3 ps-5");
+            $("#password").addClass("form-control mb-3 ps-5");
             $("#email").after('<i class="fa fa-envelope input-icon"></i>');
             $("#password").after('<i class="fa fa-key input-icon"></i>');
-            $("#next").addClass("btn btn-lg btn-success").text("LOGIN");
+            $("#next").addClass("btn btn-success").text("LOGIN");
             $("#next").parent().addClass("d-grid");
             $(".rememberMe").addClass("mb-3");
             $("#rememberMe").addClass("form-check-input");
