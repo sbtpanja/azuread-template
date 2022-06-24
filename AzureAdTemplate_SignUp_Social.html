@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link data-preload="true" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+        crossorigin="anonymous">
+
+    <link data-preload="true" rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-4 col-lg-5 col-md-6 px-xl-5 px-4 border border-1 vh-100">
+                <div class="text-center pt-3">
+                    <img class="img-fluid" style="max-width: 250px;"
+                        src="https://raw.githubusercontent.com/sbtpanja/azuread-template/main/bizligo-logo.JPG"
+                        alt="Brand Logo" title="Bizligo Login">
+                    <p>Have an account? <a class="text-decoration-none" href="#">Login</a></p>
+
+
+                </div>
+
+                <p class="text-center text-muted my-2">OR</p>
+                <div class="text-center soical-icons mb-3">
+                    <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-apple"></i>
+                    <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-microsoft"></i>
+                    <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-google"></i>
+                    <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-linkedin"></i>
+                    <!-- <i class="border-opacity-50 border-secondary border border-1 fa-brands me-2 p-2 fa-twitter"></i> -->
+                </div>
+
+            </div>
+            <div class="col-xl-8 col-lg-7 col-md-6 p-0">
+                <div class="card">
+                    <div id="api">
+
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+       
+        .soical-icons i {
+            height: 30px;
+            width: 30px;
+            cursor: pointer;
+        }
+
+        .intro,
+        .divider,
+        .options,
+        label,
+        .create,
+        #forgotPassword,
+        .heading {
+            display: none;
+        }
+
+        .entry-item,
+        .rememberMe {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            bottom: 10px;
+            font-size: 1.1rem;
+            color: gray;
+        }
+
+        label[for="rememberMe"] {
+            display: inline;
+        }
+
+        .error p {
+            margin-bottom: 5px;
+            color: red;
+        }
+
+        .highlightError {
+            border: 1px solid red;
+            box-shadow: 0 0 0 0.25rem rgb(255 0 0 / 25%);
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            // $("#email").addClass("form-control mb-3 ps-5");
+            // $("#password").addClass("form-control mb-3 ps-5");
+            // $("#email").after('<i class="fa fa-envelope input-icon"></i>');
+            // $("#password").after('<i class="fa fa-key input-icon"></i>');
+            // $("#next").addClass("btn btn-success").text("LOGIN");
+            // $("#next").parent().addClass("d-grid");
+            // $(".rememberMe").addClass("mb-3");
+            // $("#rememberMe").addClass("form-check-input");
+            // $("#rememberMe").after('<a href="#" class="text-decoration-none" style="right: 0;position:absolute;">Forgot Password ?</a>');
+
+            console.log("script running");
+
+            $(".soical-icons i").on("click", function () {
+                var socialList = [
+                    'fa-apple',
+                    'fa-microsoft',
+                    'fa-google',
+                    'fa-linkedin',
+                    'fa-twitter'
+                ];
+                var icon = $(this);
+                var iconClass = icon[0].classList;
+                var social = socialList.filter(s => iconClass.contains(s));
+                console.log(social[0]);
+                switch (social[0]) {
+                    case "fa-apple":
+                        $("#AppleManagedExchange").click();
+                        break;
+                    case "fa-microsoft":
+                        $("#MicrosoftAccountExchange").click();
+                        break;
+                    case "fa-google":
+                        $("#GoogleExchange").click();
+                        break;
+                    case "fa-linkedin":
+                        $("#LinkedInExchange").click();
+                        break;
+                    case "fa-twitter":
+                        $("#TwitterExchange").click();
+                        break;
+                    default:
+                        console.log("social provider not found");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
