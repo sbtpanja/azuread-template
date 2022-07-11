@@ -32,19 +32,26 @@
 <body>
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" id="progress">
+            <div class="col pt-5">
+                <h4 class="text-center">Authenticating...</h4>
+            </div>
+        </div>
+        <div class="row" id="content">
             <div class="col-xl-4 col-lg-5 col-md-6 px-xl-5 px-4">
                 <div class="text-center pt-3">
                     <img class="img-fluid" style="max-width: 250px;"
                         src="https://raw.githubusercontent.com/sbtpanja/azuread-template/main/bizligo-logo.JPG"
                         alt="Brand Logo" title="Bizligo Login">
-                    
-                </div>
 
+                </div>
+                <h4 class="text-center">Confirm your details</h4>
                 <div id="api" class="m-auto" style="max-width: 300px;">
 
                 </div>
-               
+
+                <p class="mb-3"></p>
+
             </div>
             <div class="col-xl-8 col-lg-7 col-md-6 p-0">
                 <img class="img-fluid"
@@ -72,12 +79,13 @@
         label,
         .create,
         #forgotPassword,
-        .heading {
+        .heading,
+        #attributeList .helpLink {
             display: none;
         }
 
         .entry-item,
-        .rememberMe {
+        .attrEntry .rememberMe {
             position: relative;
         }
 
@@ -106,49 +114,49 @@
 
     <script>
         $(document).ready(function () {
+
+            $("#content").addClass("d-none");
+
+            $("#continue").addClass("btn btn-primary me-3");
+            $("#cancel").addClass("btn btn-light");
             $("#email").addClass("form-control mb-3 ps-5");
-            $("#password").addClass("form-control mb-3 ps-5");
+            $("#givenName").addClass("form-control mb-3 ps-5");
+            $("#surname").addClass("form-control mb-3 ps-5");
+            $("#extension_Phone").addClass("form-control mb-3 ps-5");
             $("#email").after('<i class="fa fa-envelope input-icon"></i>');
-            $("#password").after('<i class="fa fa-key input-icon"></i>');
-            $("#next").addClass("btn btn-success").text("LOGIN");
-            $("#next").parent().addClass("d-grid");
-            $(".rememberMe").addClass("mb-3");
-            $("#rememberMe").addClass("form-check-input");
-            $("#rememberMe").after('<a href="#" class="text-decoration-none" style="right: 0;position:absolute;">Forgot Password ?</a>');
+            $("#givenName").after('<i class="fa fa-user-pen input-icon"></i>');
+            $("#surname").after('<i class="fa fa-user-pen input-icon"></i>');
+            $("#extension_Phone").after('<i class="fa fa-phone input-icon"></i>');
             console.log("script running");
 
-            $(".soical-icons i").on("click", function () {
-                var socialList = [
-                    'fa-apple',
-                    'fa-microsoft',
-                    'fa-google',
-                    'fa-linkedin',
-                    'fa-twitter'
-                ];
-                var icon = $(this);
-                var iconClass = icon[0].classList;
-                var social = socialList.filter(s => iconClass.contains(s));
-                console.log(social[0]);
-                switch (social[0]) {
-                    case "fa-apple":
-                        $("#AppleManagedExchange").click();
-                        break;
-                    case "fa-microsoft":
-                        $("#MicrosoftAccountExchange").click();
-                        break;
-                    case "fa-google":
-                        $("#GoogleExchange").click();
-                        break;
-                    case "fa-linkedin":
-                        $("#LinkedInExchange").click();
-                        break;
-                    case "fa-twitter":
-                        $("#TwitterExchange").click();
-                        break;
-                    default:
-                        console.log("social provider not found");
+
+            function validate() {
+                var isFormValid = true;
+                var focusTo = [];
+                if ($("#email").val() == null) {
+                    isFormValid = false;
+                    focusTo.push("#email");
                 }
-            });
+                if ($("#givenName").val() == null) {
+                    isFormValid = false;
+                    focusTo.push("#givenName");
+                }
+                if ($("#surname").val() == null) {
+                    isFormValid = false;
+                    focusTo.push("#surname");
+                }
+                if (isFormValid) {
+                    $("#continue").trigger("click");
+                } else {
+                    $(focusTo[0]).focus();
+                    $("#progress").addClass("d-none");
+                    $("#content").removeClass("d-none");
+                }
+
+            }
+
+            validate();
+
         });
     </script>
 </body>
