@@ -31,12 +31,7 @@
 
 <body>
 
-    <div class="container-fluid">
-        <div class="row" id="progress">
-            <div class="col pt-5">
-                <h4 class="text-center">Authenticating...</h4>
-            </div>
-        </div>
+    <div class="container-fluid">        
         <div class="row" id="content">
             <div class="col-xl-4 col-lg-5 col-md-6 px-xl-5 px-4">
                 <div class="text-center pt-3">
@@ -115,7 +110,7 @@
     <script>
         $(document).ready(function () {
 
-            $("#content").addClass("d-none");
+            
 
             $("#continue").addClass("btn btn-primary me-3");
             $("#cancel").addClass("btn btn-light");
@@ -149,8 +144,7 @@
                     $("#continue").trigger("click");
                 } else {
                     $(focusTo[0]).focus();
-                    $("#progress").addClass("d-none");
-                    $("#content").removeClass("d-none");
+
                 }
 
             }
